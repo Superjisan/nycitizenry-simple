@@ -19,6 +19,7 @@ var path = require('path');
 var mongoose = require('mongoose');
 var expressValidator = require('express-validator');
 var connectAssets = require('connect-assets');
+var sass = require('node-sass')
 
 /**
  * Controllers (route handlers).
@@ -93,6 +94,13 @@ app.use(session({
   })
 }));
 app.use(flash());
+app.use(
+   sass.middleware({
+       src: __dirname + '/sass', //where the sass files are
+       dest: __dirname + '/public/css', //where css should go
+       debug: true // obvious
+   })
+);
 app.use(function(req, res, next) {
   // CSRF protection.
   if (_.contains(csrfExclude, req.path)) return next();
