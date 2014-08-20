@@ -9,7 +9,7 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
 var errorHandler = require('errorhandler');
-var csrf = require('lusca').csrf();
+// var csrf = require('lusca').csrf();
 var methodOverride = require('method-override');
 var swig = require('swig')
 var _ = require('lodash');
@@ -57,7 +57,7 @@ var week = day * 7;
  * CSRF whitelist.
  */
 
-var csrfExclude = ['/url1', '/url2'];
+// var csrfExclude = ['/url1', '/url2'];
 
 /**
  * Express configuration.
@@ -97,15 +97,15 @@ app.use(flash());
 app.use(
    sass.middleware({
        src: __dirname + '/sass', //where the sass files are
-       dest: __dirname + '/public/css', //where css should go
+       dest: __dirname + '/public', //where css should go
        debug: true // obvious
    })
 );
-app.use(function(req, res, next) {
-  // CSRF protection.
-  if (_.contains(csrfExclude, req.path)) return next();
-  csrf(req, res, next);
-});
+// app.use(function(req, res, next) {
+//   // CSRF protection.
+//   if (_.contains(csrfExclude, req.path)) return next();
+//   csrf(req, res, next);
+// });
 
 
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: week }));
@@ -122,6 +122,9 @@ app.get('/', homeController.index);
 
 app.get('/api', apiController.getApi);
 app.get('/api/nyt', apiController.getNewYorkTimes);
+
+
+app.post('/whichDistrict', homeController.whichDistrict)
 
 /**
  * 500 Error Handler.

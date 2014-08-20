@@ -1,12 +1,68 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Express 4 bare template</title>
-</head>
+{% extends 'layout.html' %}
 
-<body>
-Express 4 Home Screen
-</body>
+{% block content %}
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="container-full">
 
-</html>
+      <div class="row">
+
+        <div class="col-lg-12 text-center v-center">
+
+          <h1>NYCitizenry</h1>
+          <p class="lead">Know Your Representatives!</p>
+
+          <br><br><br>
+
+          <form class="col-lg-12">
+            <div class="input-group" style="width:340px;text-align:center;margin:0 auto;">
+            <input class="form-control input-md" title="Don't worry. Your address data won't be stored anywhere in our database" placeholder="Enter your address" type="text" id="address" value="Geocode" >
+              <span class="input-group-btn">
+                <a href="#mapModal" class="btn btn-md btn-primary" type="button" data-toggle="modal" data-target="#mapModal" onclick="
+                setTimeout(codeAddress(), 500)" id="getAddress">Get My Address</a></span>
+            </div>
+          </form>
+        </div>
+              <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel" aria-hidden="true" >
+                  <br>
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h2 class="modal-title" id="myModalLabel">Is this your address?</h2>
+                      </div>
+
+                        <div id="map-canvas"></div>
+
+                      <div class="modal-footer">
+                        <button class="btn btn-success" type="submit" id="nytDistricts">Yes, it is!</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+      </div> <!-- /row -->
+
+      <div class="row">
+
+        <div class="col-lg-12 text-center v-center" style="font-size:39pt;">
+          <a href="#"><i class="icon-google-plus"></i></a> <a href="#"><i class="icon-facebook"></i></a>  <a href="#"><i class="icon-twitter"></i></a> <a href="#"><i class="icon-github"></i></a> <a href="#"><i class="icon-pinterest"></i></a>
+        </div>
+
+      </div>
+
+    <br><br><br><br><br>
+
+</div> <!-- /container full -->
+    <section data-ui-view ></section>
+
+{% endblock %}
+
+{% block bottomscript %}
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+  <script type="text/javascript">
+        window.user = {{user|json|safe}};
+  </script>
+  <script type="text/javascript" src="/js/googleMaps.js"></script>
+{% endblock %}
 

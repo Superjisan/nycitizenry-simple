@@ -20,11 +20,11 @@ module.exports = {
 
   db: process.env.MONGODB|| 'mongodb://localhost/nytcitizenry',
 
-  sessionSecret: process.env.SESSION_SECRET || 'Your Session Secret goes here',
+  sessionSecret: process.env.SESSION_SECRET || 'FranklinAndTheodoreRoosevelt',
 
   //to do: set the right NYT key here
   nyt: {
-    key: process.env.NYT_KEY || '9548be6f3a64163d23e1539f067fcabd:5:68537648'
+    key: process.env.NYT_KEY || '3c02e9b082f6cbdad519a28bbcf9438e:15:69568477'
   }
 
 
