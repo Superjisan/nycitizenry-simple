@@ -1,0 +1,23 @@
+{
+  "name": "nycitizenry-simple",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Superjisan/nycitizenry-simple",
+  "authors": [
+    "Jisan Zaman <jzthegreat@gmail.com>"
+  ],
+  "description": "website for New Yorkers to find out about their elected representatives",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.2.0",
+    "angular": "~1.2.23",
+    "jquery": "~2.1.1"
+  }
+}
