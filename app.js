@@ -102,11 +102,6 @@ app.use(
        
    })
 );
-// app.use(function(req, res, next) {
-//   // CSRF protection.
-//   if (_.contains(csrfExclude, req.path)) return next();
-//   csrf(req, res, next);
-// });
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -115,6 +110,7 @@ app.use(express.static(path.join(__dirname, 'public')));
  */
 
 app.get('/', homeController.index);
+app.get('/districts/:city', homeController.districts)
 
 /**
  * API examples routes.

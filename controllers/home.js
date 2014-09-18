@@ -19,10 +19,20 @@ exports.whichDistrict = function(req,res){
     var lattitude = req.body.lat;
     var longitude = req.body.long;
 
-    nytdistricts.getCityCouncilDistrict(lattitude,longitude, function(err,data){
-      if(err) throw err;
-      console.log('my City Council district: ', data);
-      res.json(200, data);
-    });
+    if(lattitude && longitude){
+      nytdistricts.getCityCouncilDistrict(lattitude,longitude, function(err,data){
+        if(err) throw err;
+        console.log('my City Council district: ', data);
+        res.status(200).json(data);
+      });
+    }else{
+      res.status(404).json("lattitude and longitude are not defined") 
+    }
 
 };
+
+exports.districts = function(req, res){
+  res.render('districts', {
+    title: 'Districts'
+  })
+}
