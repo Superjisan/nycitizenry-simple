@@ -19,7 +19,7 @@ var path = require('path');
 var mongoose = require('mongoose');
 var expressValidator = require('express-validator');
 var connectAssets = require('connect-assets');
-var sass = require('node-sass')
+var sass = require('node-sass');
 
 /**
  * Controllers (route handlers).
@@ -96,9 +96,10 @@ app.use(session({
 app.use(flash());
 app.use(
    sass.middleware({
-       src: __dirname + '/sass', //where the sass files are
+       src:  __dirname + '/sass', //where the sass files are
        dest: __dirname + '/public', //where css should go
-       debug: true // obvious
+       debug: true // obvious,
+       
    })
 );
 // app.use(function(req, res, next) {
@@ -107,8 +108,7 @@ app.use(
 //   csrf(req, res, next);
 // });
 
-
-app.use(express.static(path.join(__dirname, 'public'), { maxAge: week }));
+app.use(express.static(path.join(__dirname, 'public')));
 
 /**
  * Main routes.
